@@ -74,9 +74,7 @@ Updates user information, including profile details, password, image, languages 
     "email": "user@example.com",
     "phoneNumber": "+9715012345678",
     "address": "User Address",
-    "userpassword": "Current-Password123", // Current password (required for password change)
     "newPassword": "New-Password123", // New password (optional)
-    "confirmPassword": "New-Password123", // Confirm new password (must match newPassword)
     "imagePath": "[base64-encoded-image-data]", // Base64 image data
     "languages": [1, 2], // Array of language IDs
     "groups": [5, 8, 12], // Array of group IDs
@@ -287,6 +285,49 @@ Retrieves all available terminal actions.
 ]
 ```
 
+### Get Permissions
+
+Retrieves all available system permissions.
+
+- **URL**: `/look-up/permissions`
+- **Method**: `GET`
+- **Auth Required**: Yes
+
+#### Response
+
+```json
+[
+  {
+    "id": 201,
+    "nameAr": "صلاحية 1",
+    "nameEn": "Permission 1",
+    "type": "read",
+    "actions": [
+        {
+            "id": 239,
+            "nameAr": "عرض البيانات",
+            "nameEn": "View Data",
+            "type": 3
+        }
+    ]
+  },
+  {
+    "id": 202,
+    "nameAr": "صلاحية 2",
+    "nameEn": "Permission 2",
+    "type": "write",
+    "actions": [
+        {
+            "id": 269,
+            "nameAr": "عرض البيانات",
+            "nameEn": "View Data",
+            "type": 3
+        }
+    ]
+  }
+]
+```
+
 ## Data Models
 
 ### User Information
@@ -301,13 +342,13 @@ Retrieves all available terminal actions.
 | extensionPhoneNo | string | User's extension phone number |
 | email | string | User's email address |
 | imagePath | string | Path to user's profile image |
-| organizationID | number | ID of the user's organization |
+| organization | number | ID of the user's organization |
 | organizationNameAr | string | Organization name in Arabic |
 | organizationNameEn | string | Organization name in English |
-| userSourceID | number | ID of the user source |
+| userSource | number | ID of the user source |
 | userSourceAr | string | User source in Arabic |
 | userSourceEn | string | User source in English |
-| userParentID | number | ID of the user's parent/manager |
+| parent | number | ID of the user's parent/manager |
 | parentNameAr | string | Parent/manager name in Arabic |
 | parentNameEn | string | Parent/manager name in English |
 | languages | number[] | Array of language IDs the user knows |
@@ -324,9 +365,7 @@ Retrieves all available terminal actions.
 | email | string | User's email address | No |
 | phoneNumber | string | User's phone number | Yes |
 | address | string | User's address | No |
-| userpassword | string | Current password (needed for password change) | No |
 | newPassword | string | New password | No |
-| confirmPassword | string | Confirm new password (must match newPassword) | No |
 | imagePath | string/Base64 | Profile image (can be Base64 encoded data or existing path) | No |
 | languages | number[] | Array of language IDs | No |
 | groups | number[] | Array of group IDs | No |
